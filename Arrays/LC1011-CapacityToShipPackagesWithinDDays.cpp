@@ -4,7 +4,7 @@ public:
     {
         while(low <= high)
         {
-            int mid = low + (high-low)/2, i = 0, sum = 0, n = weights.size(), flag = 0;
+            int mid = low + (high-low)/2, i = 1, sum = 0, n = weights.size(), flag = 0;
             for(int w : weights)
             {
                 sum += w;
@@ -14,13 +14,9 @@ public:
                     i++;
                 }
             }
-            i++;
             if(i <= days)
             {
                 sol = mid;
-            }
-            if(i <= days)
-            {
                 return binarySearch(low, mid-1, weights, days, sol);
             }
             else
