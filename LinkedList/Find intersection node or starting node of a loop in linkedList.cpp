@@ -23,4 +23,4 @@ class Solution
         }
         return slow->data;
     }
-};Find intersection node or starting node of a loop in linkedList
+};
