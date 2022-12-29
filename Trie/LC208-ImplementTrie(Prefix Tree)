@@ -1,0 +1,59 @@
+class TrieNode
+{
+    public:
+    TrieNode* children[26];
+    bool is_word;
+    TrieNode()
+    {
+        is_word = false;
+        for(int i=0; i<26; i++)
+            children[i] = NULL;
+    }
+};
+
+class Trie {
+private:
+    TrieNode *root;
+public:
+    Trie() {
+        root = new TrieNode();
+    }
+    
+    void insert(string word) {
+        TrieNode *curr = root;
+        int n = word.length();
+        for(int i=0; i<n; i++)
+        {
+            if(curr->children[word[i]-'a'] == NULL)
+            {
+                curr->children[word[i]-'a'] = new TrieNode();
+            }
+            curr = curr->children[word[i]-'a'];
+        }
+        curr->is_word = true;
+    }
+    
+    bool search(string word) {
+        int n = word.length();
+        TrieNode *curr = root;
+        for(int i=0; i<n; i++)
+        {
+            curr = curr->children[word[i]-'a'];
+            if(curr == NULL)
+                return false;
+        }
+        return curr->is_word;
+    }
+    
+    bool startsWith(string word) {
+        int n = word.length();
+        TrieNode *curr = root;
+        for(int i=0; i<n; i++)
+        {
+            curr = curr->children[word[i]-'a'];
+            if(curr == NULL)
+                return false;
+        }
+        return true;
+    }
+};
